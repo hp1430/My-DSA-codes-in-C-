@@ -1,0 +1,1 @@
+// Input a string and return the number of substrings that contain only vowels.
