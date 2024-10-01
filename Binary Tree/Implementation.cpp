@@ -23,6 +23,11 @@ int maxi(Node *root)
     if(root==NULL) return INT_MIN;
     return max(root->val, max(maxi(root->left), maxi(root->right)));
 }
+int mini(Node *root)
+{
+    if(!root) return INT_MAX;
+    return min(root->val, min(mini(root->left), mini(root->right)));
+}
 int size(Node *root)
 {
     if(root==NULL) return 0;
@@ -32,6 +37,11 @@ int sum(Node *root)
 {
     if(root==NULL) return 0;
     return root->val+sum(root->left)+sum(root->right);
+}
+int product(Node *root)
+{
+    if(!root) return 1;
+    return root->val*product(root->left)*product(root->right);
 }
 void display(Node *root)
 {
@@ -57,7 +67,9 @@ int main()
     display(a);
     cout<<endl;
     cout<<"Sum: "<<sum(a)<<endl;
+    cout<<"Product: "<<product(a)<<endl;
     cout<<"Size: "<<size(a)<<endl;
     cout<<"Max: "<<maxi(a)<<endl;
+    cout<<"Min: "<<mini(a)<<endl;
     cout<<"Level: "<<level(a)<<endl;
 }
