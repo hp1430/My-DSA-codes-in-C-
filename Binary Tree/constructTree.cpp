@@ -16,28 +16,24 @@ public:
 };
 Node* construct(int arr[], int n)
 {
+    Node *root = new Node(arr[0]);
     queue<Node*>q;
-    Node *root=new Node(arr[0]);
-    int i=1, j=2;
     q.push(root);
-    while(q.size()>0 && i<n)
-    {
-        Node *temp=q.front();
+    int i=1, j=2;
+    while(q.size()>0 && i<n) {
+        Node *temp = q.front();
         q.pop();
-        Node *l;
-        Node *r;
-        if(arr[i] != INT_MIN) l=new Node(arr[i]);
+        Node *l, *r;
+        if(arr[i]!=INT_MIN) l=new Node(arr[i]);
         else l=NULL;
-        if(j!=n && arr[j] != INT_MIN) r=new Node(arr[j]);
+        if(j<n && arr[j]!=INT_MIN) r=new Node(arr[j]);
         else r=NULL;
         temp->left=l;
         temp->right=r;
-        if(l!=NULL) q.push(l);
-        if(r!=NULL) q.push(r);
-
+        if(l) q.push(l);
+        if(r) q.push(r);
         i+=2;
-        r+=2;
-        
+        j+=2;
     }
     return root;
 }
